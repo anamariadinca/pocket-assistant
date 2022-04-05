@@ -2,7 +2,6 @@ import {useState, useEffect} from "react";
 import {useRef} from 'react';
 
 const url = 'http://localhost:8081/users/register/admin';
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const useForm = (validate) => {
     const [values, setValues] = useState({
@@ -26,6 +25,7 @@ const useForm = (validate) => {
 
         setErrors(validate(values));
         if (Object.keys(errors).length === 0) {
+            document.getElementById("submitButton").disabled = true
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -43,6 +43,7 @@ const useForm = (validate) => {
                     console.log("SUCCESSS")
                     window.location.href = "http://localhost:3000/emailSent";
                 } else if (status === 400) {
+                    document.getElementById("submitButton").disabled = false
                     console.log("SOMETHING WENT WRONG")
                     response.json().then(json => {
                         alert(json.message)

@@ -7,8 +7,6 @@ const FormSignup = () => {
     const {handleChange, values, handleSubmit, errors}
         = useForm(validate);
 
-    const [disable, setDisable] = useState(false);
-
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
@@ -23,8 +21,7 @@ const FormSignup = () => {
                         type="text"
                         name="email"
                         className="form-input"
-                        // placeholder="Enter your email address"
-                        defaultValue={"ana.maria.dinca.1411@gmail.com"}
+                        placeholder="Enter your email address"
                         value={values.email}
                         onChange={handleChange}
                     />
@@ -39,16 +36,14 @@ const FormSignup = () => {
                         type="text"
                         name="phoneNumber"
                         className="form-input"
-                        // placeholder="Enter your phone number"
-                        defaultValue={"+40721001414"}
+                        placeholder="Enter your phone number"
                         value={values.phoneNumber}
                         onChange={handleChange}
                     />
                     {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
                 </div>
-                <button className="form-input-btn"
-                        type="submit"
-                        disabled={disable} onSubmit={() => setDisable(true)}>
+                <button id = "submitButton" className="form-input-btn"
+                        type="submit">
                     Trimite
                 </button>
                 <div>
