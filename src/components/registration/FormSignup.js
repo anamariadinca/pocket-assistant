@@ -15,13 +15,13 @@ const FormSignup = () => {
                 <div className="form-inputs">
                     <label htmlFor="email"
                            className="form-label">
-                        Email address:
+                        Adresa de email:
                     </label>
                     <input
                         type="text"
                         name="email"
                         className="form-input"
-                        placeholder="Enter your email address"
+                        placeholder="Tastați adresa de email"
                         value={values.email}
                         onChange={handleChange}
                     />
@@ -30,13 +30,13 @@ const FormSignup = () => {
                 <div className="form-inputs">
                     <label htmlFor="phoneNumber"
                            className="form-label">
-                        Phone number:
+                        Număr de telefon:
                     </label>
                     <input
                         type="text"
                         name="phoneNumber"
                         className="form-input"
-                        placeholder="Enter your phone number"
+                        placeholder="Tastați numărul de telefon"
                         value={values.phoneNumber}
                         onChange={handleChange}
                     />

@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import useForm from "./useForm";
 import '../css/Form.css'
+import {AiFillEye, AiOutlineEye} from "react-icons/ai";
 
 const FormLogin = () => {
 
     const {handleChange, values, handleSubmit}
         = useForm();
+    const [inputType, setInputType] = useState('password');
 
     return (
         <div className="form-content-right">
@@ -15,27 +17,32 @@ const FormLogin = () => {
                 <div className="form-inputs">
                     <label htmlFor="email"
                            className="form-label">
-                        Email address:
+                        Adresa de email:
                     </label>
                     <input
                         type="text"
                         name="email"
                         className="form-input"
-                        placeholder="Enter your email address"
+                        placeholder="Tastați adresa de email"
                         value={values.email}
                         onChange={handleChange}
                     />
                 </div>
                 <div className="form-inputs">
-                    <label htmlFor="password"
-                           className="form-label">
-                        Password:
-                    </label>
+                    <div className="label-eye-wrapper">
+                        <label htmlFor="password-input" className="form-label">Parola:</label>
+                        {inputType === "password"
+                            ?
+                            <AiOutlineEye onClick={() => setInputType('text')} color="white"/>
+                            :
+                            <AiFillEye onClick={() => setInputType('password')} color="white"/>
+                        }
+                    </div>
                     <input
-                        type="text"
+                        type={inputType}
                         name="password"
                         className="form-input"
-                        placeholder="Enter your password"
+                        placeholder="Tastați parola"
                         value={values.password}
                         onChange={handleChange}
                     />

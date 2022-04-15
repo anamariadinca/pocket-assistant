@@ -8,9 +8,9 @@ const FormSignupOtp = () => {
         = useFormOtp();
 
     return (
-        <div className="form-content">
+        <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form-header-black">Introduceți otp</h2>
+                <h2 className="form-header">Introduceți otp</h2>
                 <div className="form-inputs">
                     <label htmlFor="otp"
                            className="form-label">
@@ -20,7 +20,7 @@ const FormSignupOtp = () => {
                         type="text"
                         name="otp"
                         className="form-input"
-                        placeholder="Enter your otp"
+                        placeholder="Tastați OTP"
                         value={values.otp}
                         onChange={handleChange}
                     />

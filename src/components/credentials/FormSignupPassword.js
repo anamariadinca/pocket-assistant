@@ -1,27 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import '../css/Form.css'
 import useFormPassword from "./useFormPassword";
 import validate from "./validateInfo";
+import {AiOutlineEye, AiFillEye} from 'react-icons/ai';
 
 const FormSignupPassword = () => {
 
-    const {handleChange, values, handleSubmit, errors}
-        = useFormPassword(validate);
+    const {handleChange, values, handleSubmit, errors} = useFormPassword(validate);
+    const [inputType, setInputType] = useState('password');
 
     return (
-        <div className="form-content">
+        <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form-header-black">Introduceți parola</h2>
+                <h2 className="form-header">Introduceți parola</h2>
                 <div className="form-inputs">
-                    <label htmlFor="password"
-                           className="form-label">
-                        Parola:
-                    </label>
+                    <div className="label-eye-wrapper">
+                        <label htmlFor="password-input" className="form-label">Parola:</label>
+                        {inputType === "password"
+                            ?
+                            <AiOutlineEye onClick={() => setInputType('text')} color="white"/>
+                            :
+                            <AiFillEye onClick={() => setInputType('password')} color="white"/>
+                        }
+                    </div>
                     <input
-                        type="text"
+                        type={inputType}
                         name="password"
                         className="form-input"
-                        placeholder="Enter your password"
+                        placeholder="Tastați parola"
                         value={values.password}
                         onChange={handleChange}
                     />
@@ -30,13 +36,13 @@ const FormSignupPassword = () => {
                 <div className="form-inputs">
                     <label htmlFor="password"
                            className="form-label">
-                        Phone number:
+                        Confirmați parola:
                     </label>
                     <input
-                        type="text"
+                        type={inputType}
                         name="password2"
                         className="form-input"
-                        placeholder="Re-enter your password"
+                        placeholder="Tastați parola"
                         value={values.password2}
                         onChange={handleChange}
                     />
