@@ -9,7 +9,7 @@ const useForm = (validate) => {
         phoneNumber: ''
     })
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState("");
 
     const handleChange = e => {
         const {name, value} = e.target
@@ -22,8 +22,9 @@ const useForm = (validate) => {
     const handleSubmit = e => {
 
         e.preventDefault();
+        let errors = validate(values);
+        setErrors(errors);
 
-        setErrors(validate(values));
         if (Object.keys(errors).length === 0) {
             document.getElementById("submitButton").disabled = true
             fetch(url, {
@@ -37,7 +38,6 @@ const useForm = (validate) => {
                     phoneNumber: values.phoneNumber
                 })
             }).then(response => {
-
                 const status = response.status
                 if (status === 200) {
                     console.log("SUCCESSS")
