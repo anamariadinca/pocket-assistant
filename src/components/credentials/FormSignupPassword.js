@@ -12,7 +12,7 @@ const FormSignupPassword = () => {
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form-header">Introduceți parola</h2>
+                <h2 className="form-header">Setați parola</h2>
                 <div className="form-inputs">
                     <div className="label-eye-wrapper">
                         <label htmlFor="password-input" className="form-label">Parola:</label>

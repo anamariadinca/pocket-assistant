@@ -2,7 +2,7 @@ import React from "react";
 import '../css/Form.css'
 import useFormHome from "./useFormHome";
 import Lottie from "react-lottie";
-import notReady from "../../lotties/home.json";
+import home from "../../lotties/university.json";
 
 const FormHome = () => {
 
@@ -13,7 +13,7 @@ const FormHome = () => {
         loop: true,
         autoplay: true,
         margin: '0',
-        animationData: notReady,
+        animationData: home,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
