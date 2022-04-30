@@ -1,14 +1,14 @@
 import React from "react";
 import Form from "../components/home/Form";
+import "../components/css/Form.css"
 
-const Home = () => {
-
+const Login = () => {
 
     return (
-        <div>
-            <Form/>
+        <div className= 'homePage'>
+            <Form role="student"/>
         </div>
     )
 }
 
-export default Home;
+export default Login;

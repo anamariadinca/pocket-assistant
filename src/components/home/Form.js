@@ -1,11 +1,15 @@
 import React from "react";
-import '../css/Form.css'
-import FormHome from "./FormHome";
+import Toolbar from "./toolbar/toolbar";
+import SideNav from "./sidenav/sidenav";
+import Center from "./center/center";
 
-const Form = () => {
+const Form = (props) => {
+
     return (
-        <div className="form-container-home">
-            <FormHome/>
+        <div>
+            <Toolbar/>
+            <SideNav formUserRole={props.role}/>
+            <Center/>
         </div>
     )
 }

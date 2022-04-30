@@ -4,7 +4,7 @@ import axios from "axios";
 const url = 'http://localhost:8081/users/homePage';
 const url2 = 'http://localhost:8081/users/register/otp?token=';
 
-const useFormHome = () => {
+const useFormLoading = () => {
     const [values, setValues] = useState({
         otp: ''
     })
@@ -95,5 +95,5 @@ const useFormHome = () => {
 }
 
 
-export default useFormHome;
+export default useFormLoading;
 

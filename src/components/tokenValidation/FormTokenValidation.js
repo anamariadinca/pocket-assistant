@@ -1,14 +1,12 @@
 import React from "react";
 import '../css/Form.css'
-import useFormHome from "./useFormHome";
 import Lottie from "react-lottie";
 import home from "../../lotties/university.json";
+import useFormTokenValidation from "./useFormTokenValidation";
 
-const FormHome = () => {
+const FormTokenValidation = () => {
 
-    const {handleChange, values, handleSubmit}
-        = useFormHome();
-
+    const values = useFormTokenValidation();
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -30,4 +28,4 @@ const FormHome = () => {
     )
 }
 
-export default FormHome;
+export default FormTokenValidation;

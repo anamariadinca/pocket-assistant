@@ -1,8 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import FormSignupPassword from "./FormSignupPassword";
 import '../css/Form.css'
-import FormSignupOtp from "../otp/FormSignupOtp";
-import FormSignup from "../registration/FormSignup";
 
 const Form = () => {
 

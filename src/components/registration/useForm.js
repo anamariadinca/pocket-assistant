@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import {useRef} from 'react';
 
 const url = 'http://localhost:8081/users/register/admin';
 

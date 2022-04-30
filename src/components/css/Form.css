@@ -171,3 +171,12 @@
     color: #27cdff;
     font-weight: 600;
 }
+
+.homePage {
+    background: rgba(39, 176, 255, 0.12);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*left: 0;*/
+    /*overflow: hidden;*/
+}
