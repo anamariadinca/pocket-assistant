@@ -12,7 +12,7 @@ const FormLogin = () => {
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form-header">Logare</h2>
+                <h2 className="form-header">Autentificare</h2>
                 <h3 className="form-header">Introduceți datele de logare mai jos</h3>
                 <div className="form-inputs">
                     <label htmlFor="email"

@@ -6,7 +6,7 @@ const Login = () => {
 
     return (
         <div className= 'homePage'>
-            <Form role="student"/>
+            <Form/>
         </div>
     )
 }

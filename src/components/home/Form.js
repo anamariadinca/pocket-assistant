@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Toolbar from "./toolbar/toolbar";
-import SideNav from "./sidenav/sidenav";
 import Center from "./center/center";
 
-const Form = (props) => {
+const Form = () => {
+
+    const urlParams = new URLSearchParams(window.location.search);
 
     return (
         <div>
-            <Toolbar/>
-            <SideNav formUserRole={props.role}/>
+            <Toolbar role={urlParams.get('role')} name={urlParams.get('name')} week={urlParams.get('week')}/>
             <Center/>
         </div>
     )
