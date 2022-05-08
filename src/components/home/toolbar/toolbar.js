@@ -36,7 +36,7 @@ function NavItem(props) {
         setOpen(!open)
         if (id === "side-nav") {
             document.getElementById('side-nav').style.marginLeft = !open ? "170px" : ""
-            let centerDivName = "centerpiece"
+            let centerDivName = "schedule"
             if (document.getElementById(centerDivName) != null) {
                 if (!open) {
                     document.getElementById(centerDivName).style.marginLeft = '55%';
@@ -47,9 +47,9 @@ function NavItem(props) {
         }
     }
 
-    useEffect(() => {
+    // useEffect(() => {
         // document.getElementById("ddddd").prepend('<p>{props.name}</p>')
-    });
+    // });
 
 
     let id = props.id === "side-nav-item" ? "side-nav" : "";
