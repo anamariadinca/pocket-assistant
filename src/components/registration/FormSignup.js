@@ -48,7 +48,7 @@ const FormSignup = () => {
                 </button>
                 <div>
                     <span className="form-input-login">
-                        Ai deja cont? Loghează-te <a href="http://localhost:3000/login">aici</a>
+                        Ai deja cont? Autentifică-te <a href="http://localhost:3000/login">aici</a>
                     </span>
                 </div>
             </form>

@@ -1,0 +1,15 @@
+:root {
+    --bg:  #242526;
+    --bg-accent: #484a4d;
+    --text-color: #dadce1;
+    --nav-size: 40px;
+    --border: 1px solid #474a4d;
+    --border-radius: 8px;
+    --speed: 500ms;
+    --sched-nav-open: 51%;
+    --sched-nav-closed: 45.5%;
+    --text-nav-open: 3.5em;
+    --text-nav-closed: 1em;
+    --button-nav-open: 48.2%;
+    --button-nav-closed: 42.5%;
+}

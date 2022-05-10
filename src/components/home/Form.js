@@ -9,7 +9,7 @@ const Form = () => {
     return (
         <div>
             <Toolbar role={urlParams.get('role')} name={urlParams.get('name')} week={urlParams.get('week')}/>
-            <Center/>
+            <Center week={urlParams.get('week')}/>
         </div>
     )
 }
