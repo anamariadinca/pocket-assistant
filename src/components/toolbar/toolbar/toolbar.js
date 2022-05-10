@@ -80,7 +80,7 @@ function DropdownMenu() {
 
     function DropdownItem(props) {
         return (
-            <a href="#" className="menu-item">
+            <a href={props.redirectLink} className="menu-item">
                 <span className="icon-button"> {props.leftIcon} </span>
                 {props.children}
                 {/*<span className="icon-right"> {props.rightIcon} </span>*/}
@@ -93,7 +93,7 @@ function DropdownMenu() {
             <DropdownItem leftIcon={<ProfileIcon/>}>
                 Setări
             </DropdownItem>
-            <DropdownItem leftIcon={<LogOutIcon/>}>
+            <DropdownItem leftIcon={<LogOutIcon/>} redirectLink="http://localhost:3000/login">
                 Ieși din cont
             </DropdownItem>
         </div>

@@ -13,7 +13,7 @@ function Center(props) {
                     <h1>Este săptămâna {props.week}</h1>
                 </div>
                 <Table/>
-                <ReservationButton/>
+                <ReservationButton id='reservationbutton'/>
             </div>
         </div>
     )

@@ -34,3 +34,35 @@
     background-color: rgb(39, 176, 255);
     color: white;
 }
+
+#schedule tr {
+    height: 25px;
+}
+
+.main {
+    overflow: hidden;
+    position: relative;
+}
+
+.text {
+    text-align: left;
+    bottom: 1px;
+    left: 1px;
+}
+
+.percentage {
+    background-color: transparent;
+    text-align: right;
+}
+
+.line {
+    border-bottom: 1px solid red;
+    transform: translateY(-30px) translateX(5px) rotate(145deg);
+    position: absolute;
+    z-index: -1;
+}
+
+.percentage>div {
+    position: relative;
+    z-index: 1;
+}

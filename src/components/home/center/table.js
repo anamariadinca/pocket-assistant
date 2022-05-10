@@ -1,5 +1,33 @@
-import React, {Component} from 'react'
+import React, {Component, useEffect} from 'react'
 import './table.css'
+
+function returnSpecial(hour, subject) {
+    if (subject.search('/') >= 0) {
+        let s1 = subject.split("/")[0];
+        let s2 = subject.split("/")[1];
+
+        return <tr key={hour}>
+            <td>{hour}</td>
+            <td>
+                <div className="main">
+                    <div className="text">{s1}</div>
+                    <div className="percentage">
+                        <div>
+                            {s2}
+                        </div>
+                        <div className="line"></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    } else {
+        return <tr key={hour}>
+            <td>{hour}</td>
+            <td>{subject}</td>
+        </tr>
+    }
+
+}
 
 class Table extends Component {
     constructor(props) {
@@ -9,8 +37,8 @@ class Table extends Component {
                 {hour: '08-09', subject: ''},
                 {hour: '09-10', subject: ''},
                 {hour: '10-11', subject: ''},
-                {hour: '11-12', subject: 'SS'},
-                {hour: '12-13', subject: 'SS'},
+                {hour: '11-12', subject: 'SS/ASC'},
+                {hour: '12-13', subject: 'SS/ASC'},
                 {hour: '13-14', subject: 'MC'},
                 {hour: '14-15', subject: 'MC'},
                 {hour: '15-16', subject: 'SS l'},
@@ -29,23 +57,22 @@ class Table extends Component {
         let time = today.getHours();
 
         return this.state.sched.map((schedule, index) => {
-            const {hour, subject} = schedule //destructuring
-            // let time2 = 11;
-            if (highlightRow(hour, time)){
+                const {hour, subject} = schedule //destructuring
+                if (highlightRow(hour, time)) {
+                    return (
+                        <tr key={hour}>
+                            <td style={{backgroundColor: '#f00e0e'}}>{hour}</td>
+                            <td style={{backgroundColor: '#f00e0e'}}>{subject}</td>
+                        </tr>
+                    )
+                }
                 return (
-                    <tr key={hour}>
-                        <td style={{backgroundColor: '#f00e0e'}} >{hour}</td>
-                        <td style={{backgroundColor: '#f00e0e'}}>{subject}</td>
-                    </tr>
+                    returnSpecial(hour, subject)
                 )
+                let me;
+
             }
-            return (
-                <tr key={hour}>
-                    <td>{hour}</td>
-                    <td>{subject}</td>
-                </tr>
-            )
-        })
+        )
     }
 
     renderTableHeader() {
@@ -59,7 +86,7 @@ class Table extends Component {
         return (
             <div>
                 <table id='schedule'>
-                    <tbody>
+                    <tbody id = 'tbody'>
                     <tr>{this.renderTableHeader()}</tr>
                     {this.renderTableData()}
                     </tbody>
@@ -71,8 +98,7 @@ class Table extends Component {
 
 
 function highlightRow(interval, hour) {
-    let h1 = interval.substring(0,2);
-    // let h2 = interval.substring(3,5);
+    let h1 = interval.substring(0, 2);
     return parseInt(h1) === parseInt(hour);
 }
 
