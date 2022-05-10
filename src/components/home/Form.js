@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import Toolbar from "./toolbar/toolbar";
+import Toolbar from "../toolbar/toolbar/toolbar";
 import Center from "./center/center";
 
 const Form = () => {

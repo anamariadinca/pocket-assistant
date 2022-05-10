@@ -1,21 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './toolbar.css';
-import '../Form.css';
-import {RiSettings3Fill as SettingsIcon} from 'react-icons/ri';
+import '../../home/Form.css';
+import {RiContactsFill as ContactIcon} from 'react-icons/ri';
+import {MdOutlineEditCalendar as ReservationIcon} from 'react-icons/md';
 import {CgProfile as ProfileIcon} from 'react-icons/cg';
 import {AiOutlineLeft as CloseIcon, AiOutlineLogout as LogOutIcon, AiOutlineRight as OpenIcon} from 'react-icons/ai';
 
 function Toolbar(props) {
-
-    let position;
-
-    useEffect( () => {
-        let box = document.querySelector('.navbar');
-        if (box != null) {
-            position = box.offsetWidth;
-        }
-    }, [])
-
 
     return (
         <div>
@@ -23,8 +14,8 @@ function Toolbar(props) {
                 <NavItem icon={[<CloseIcon/>, <OpenIcon/>]} id="side-nav-item">
                     <SideNavMenu role={props.role} name={props.name}/>
                 </NavItem>
-                <div><img src="img/logo.png" style={{width: '170px', marginLeft:'50%', cursor: 'pointer'}} onClick={() => goToHomepage()}/></div>
-                <NavItem icon={<ProfileIcon/>} name='Ana-Maria Dinca' id="profile-menu">
+                <div id="imagediv"><img id='imageid' src="img/logo.png" onClick={() => goToHomepage()}/></div>
+                <NavItem icon={<ProfileIcon/>} name={props.name} id="profile-menu">
                     <DropdownMenu/>
                 </NavItem>
             </Navbar>
@@ -33,7 +24,7 @@ function Toolbar(props) {
 }
 
 function goToHomepage() {
-    window.location.href="http://localhost:3000/meme"
+    window.location.href="http://localhost:3000/home"
 }
 
 function Navbar(props) {
@@ -52,16 +43,17 @@ function NavItem(props) {
         setOpen(!open)
         if (id === "side-nav") {
             document.getElementById('side-nav').style.marginLeft = !open ? "170px" : ""
-            let centerDivName = "schedule"
-            if (document.getElementById(centerDivName) != null) {
+            if (document.getElementById("schedule") != null) {
                 if (!open) {
-                    document.getElementById(centerDivName).style.marginLeft = 'var(--sched-nav-open)';
-                    document.getElementById("textcenterpiece").style.marginInlineStart = 'var(--text-nav-open)';
-                    document.getElementById("buttoncenterpiece").style.marginInlineStart = 'var(--button-nav-open)';
+                    document.getElementById("schedule").style.marginLeft = 'calc((100% - 30px)/2)';
+                    document.getElementById("imageid").style.left = 'calc(50%)';
+                    document.getElementById("textcenterpiece").style.marginRight = '-170px';
+                    document.getElementById("buttoncenterpiece").style.marginLeft = 'calc(40% + 85px)';
                 } else {
-                    document.getElementById(centerDivName).style.marginLeft = 'var(--sched-nav-closed)';
-                    document.getElementById("textcenterpiece").style.marginInlineStart = 'var(--text-nav-closed)';
-                    document.getElementById("buttoncenterpiece").style.marginInlineStart = 'var(--button-nav-closed)';
+                    document.getElementById("schedule").style.marginLeft = 'calc((100% - 200px)/2)';
+                    document.getElementById("imageid").style.left = 'calc((100% - 170px) / 2)';
+                    document.getElementById("textcenterpiece").style.marginRight = '0px';
+                    document.getElementById("buttoncenterpiece").style.marginLeft = '40%';
                 }
             }
         }
@@ -99,10 +91,10 @@ function DropdownMenu() {
     return (
         <div className="dropdown">
             <DropdownItem leftIcon={<ProfileIcon/>}>
-                My profile
+                Setări
             </DropdownItem>
             <DropdownItem leftIcon={<LogOutIcon/>}>
-                Logout
+                Ieși din cont
             </DropdownItem>
         </div>
     )
@@ -130,11 +122,11 @@ function SideNavMenu(formUser) {
 
     return (
         <div className="side-nav">
-            <SideNavItem leftIcon={<ProfileIcon/>}>
-                My profile
+            <SideNavItem leftIcon={<ReservationIcon/>}>
+                Rezervă o sală
             </SideNavItem>
-            <SideNavItem leftIcon={<LogOutIcon/>}>
-                Logout
+            <SideNavItem leftIcon={<ContactIcon/>}>
+                Contact
             </SideNavItem>
             {formUser.role === "teacher" ?
                 <OptionalSideNavItem leftIcon={<LogOutIcon/>}>
