@@ -17,6 +17,7 @@ import Meme from "./pages/meme";
 import LoadingPage from "./pages/loading";
 import OtpPage from "./pages/otp";
 import TokenValidation from "./pages/tokenValidation";
+import ReserveRoomPage from "./pages/reserveRoom";
 
 class App extends Component {
     render() {
@@ -30,6 +31,7 @@ class App extends Component {
                     <Route path = '/otp*' element = {<OtpPage/>}/>
                     <Route path = '/login' element = {<LoginPage/>}/>
                     <Route path = '/loading' element = {<LoadingPage/>}/>
+                    <Route path = '/reserveRoom' element = {<ReserveRoomPage/>}/>
                     <Route path = '/demo' element = {<HomePage/>}/>
                     <Route path = '/meme' element = {<Meme/>}/>
                     <Route path = '/home' element = {<HomePage/>}/>

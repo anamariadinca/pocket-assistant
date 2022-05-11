@@ -44,16 +44,34 @@ function NavItem(props) {
         if (id === "side-nav") {
             document.getElementById('side-nav').style.marginLeft = !open ? "170px" : ""
             if (document.getElementById("schedule") != null) {
+                let width = document.getElementById("schedule").offsetWidth;
                 if (!open) {
-                    document.getElementById("schedule").style.marginLeft = 'calc((100% - 30px)/2)';
+                    document.getElementById("schedule").style.marginLeft = 'calc((100% - ' + width + 'px + 170px)/2)';
                     document.getElementById("imageid").style.left = 'calc(50%)';
                     document.getElementById("textcenterpiece").style.marginRight = '-170px';
                     document.getElementById("buttoncenterpiece").style.marginLeft = 'calc(40% + 85px)';
                 } else {
-                    document.getElementById("schedule").style.marginLeft = 'calc((100% - 200px)/2)';
+                    document.getElementById("schedule").style.marginLeft = 'calc((100% - ' + width + 'px)/2)';
                     document.getElementById("imageid").style.left = 'calc((100% - 170px) / 2)';
                     document.getElementById("textcenterpiece").style.marginRight = '0px';
                     document.getElementById("buttoncenterpiece").style.marginLeft = '40%';
+                }
+            }
+            if (document.getElementById("scheduletable") != null) {
+                let width = document.getElementById("scheduletable").offsetWidth;
+                if (!open) {
+                    document.getElementById("scheduletable").style.marginLeft = 'calc((100% - ' + width + 'px + 170px)/2)';
+                    document.getElementById("scheddropdown").style.left = 'calc((100% - 30px)/2)';
+                    document.getElementById("textreserveroom").style.marginLeft = 'calc((60% + 170px)/2)';
+
+                    document.getElementById("imageid").style.left = 'calc(50%)';
+
+                } else {
+                    document.getElementById("scheduletable").style.marginLeft = 'calc((100% - '+ width +'px)/2)';
+                    document.getElementById("textreserveroom").style.marginLeft = '30%';
+                    document.getElementById("scheddropdown").style.left = 'calc((100% - 200px)/2)';
+
+                    document.getElementById("imageid").style.left = 'calc((100% - 170px) / 2)';
                 }
             }
         }
@@ -104,7 +122,7 @@ function SideNavMenu(formUser) {
 
     function SideNavItem(props) {
         return (
-            <a href="#" className="menu-item">
+            <a href={props.redirectLink} className="menu-item">
                 <span className="icon-button"> {props.leftIcon} </span>
                 {props.children}
             </a>
@@ -113,7 +131,7 @@ function SideNavMenu(formUser) {
 
     function OptionalSideNavItem(props) {
         return (
-            <a href="#" className="menu-item">
+            <a href={props.redirectLink} className="menu-item">
                 <span className="icon-button"> {formUser.role === "teacher" ? props.leftIcon : ""} </span>
                 {props.children}
             </a>
@@ -122,14 +140,14 @@ function SideNavMenu(formUser) {
 
     return (
         <div className="side-nav">
-            <SideNavItem leftIcon={<ReservationIcon/>}>
+            <SideNavItem leftIcon={<ReservationIcon/>} redirectLink="http://localhost:3000/reserveRoom">
                 Rezervă o sală
             </SideNavItem>
-            <SideNavItem leftIcon={<ContactIcon/>}>
+            <SideNavItem leftIcon={<ContactIcon/>} redirectLink="#">
                 Contact
             </SideNavItem>
             {formUser.role === "teacher" ?
-                <OptionalSideNavItem leftIcon={<LogOutIcon/>}>
+                <OptionalSideNavItem leftIcon={<LogOutIcon/>} redirectLink="#">
                     {formUser.role === "teacher" ? 'Adauga student' : ''}
                 </OptionalSideNavItem> : ""}
 

@@ -6,8 +6,8 @@
 #schedule {
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-radius: 10px 10px 10px 10px;
-    border: 3px solid rgb(39, 176, 255);
+    /*border-radius: 10px 10px 10px 10px;*/
+    border: 3px solid var(--bg);
     width: 200px;
     position: absolute;
     margin-left: calc((100% - 200px)/2);
@@ -20,18 +20,18 @@
     padding: 6px;
 }
 
-#schedule th:not(:first-child, :nth-child(2)) {
-    border: 1px solid #ddd;
-    padding: 6px;
-    }
+/*#schedule th:not(:first-child, :nth-child(5)) {*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 6px;*/
+/*    }*/
 
-#schedule tr:nth-child(even){background-color: #f2f2f2;}
+/*#schedule tr:nth-child(even){background-color: #f2f2f2;}*/
 
 #schedule th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: rgb(39, 176, 255);
+    background-color: var(--bg);
     color: white;
 }
 
@@ -56,8 +56,8 @@
 }
 
 .line {
-    border-bottom: 1px solid red;
-    transform: translateY(-30px) translateX(5px) rotate(145deg);
+    border-bottom: 1px solid #000000;
+    transform: translateY(-30px) translateX(5px) rotate(120deg);
     position: absolute;
     z-index: -1;
 }

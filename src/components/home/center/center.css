@@ -3,19 +3,21 @@
     /*height: 100%;*/
 }
 #centerpiece h1 {
-    width: 100%;
+    width: 30%;
+    margin-left: 35%;
     height: 100%;
     text-align: center;
     margin-block-start: 1em;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    color: #525357;
+    color: #3f3f42;
 }
 
 #centerpiece button {
     width: 20%;
     height: 50px;
     border-radius: 2px;
-    background: rgb(39, 176, 255) 0%;
+    cursor: pointer;
+    background: var(--bg);
     margin-left: 40%;
     /*top: calc(100% - 100px);*/
     position: relative;

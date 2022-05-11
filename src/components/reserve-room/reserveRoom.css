@@ -1,0 +1,80 @@
+h1 {
+    width: 40%;
+    margin-left: 30%;
+    height: 100%;
+    text-align: center;
+    margin-block-start: 1em;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #3f3f42;
+}
+
+#scheduletable {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    /*border-radius: 10px 10px 10px 10px;*/
+    cursor: pointer;
+    border: 3px solid var(--bg);
+    width: 200px;
+    position: absolute;
+    margin-left: calc((100% - 200px)/2);
+    margin-block-start: 4em;
+    border-spacing: 0 0;
+}
+
+#scheduletable td {
+    border: 1px solid #ddd;
+    padding: 6px;
+}
+
+/*#scheduletable th:not(:first-child, :nth-child(5)) {*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 6px;*/
+/*    }*/
+
+/*#scheduletable tr:nth-child(even){background-color: #f2f2f2;}*/
+
+#scheduletable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--bg);
+    color: white;
+}
+
+#scheduletable tr {
+    height: 25px;
+}
+
+select {
+     -webkit-appearance: listbox;
+     color: black;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    margin-block-start: 1.4em;
+    left: calc((100% - 200px)/2);
+    text-align-last:center;
+
+}
+
+select:invalid {
+    color: #858484;
+}
+
+
+#buttoncenterpiece {
+    width: 20%;
+    height: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    background: var(--bg);
+    margin-left: 40%;
+    margin-top: 600px;
+    position: relative;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    display: none;
+}
