@@ -14,15 +14,20 @@ const FormSuccess = () => {
         }
     };
 
+    document.body.style.backgroundColor = 'rgb(40, 40, 40)';
+
     return (
-        <div className="form-content-right">
-            <div className="form-success">We have received your request! Please check your email</div>
+        <div>
+            <div style={{textAlign: 'center', fontSize: '24px', marginTop: '80px', color: '#fff'}}>We have received your
+                request! Please check your email
+            </div>
             <Lottie
                 options={defaultOptions}
                 height={600}
                 width={600}
             />
         </div>
+
     )
 }
 
