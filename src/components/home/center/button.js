@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 
-function ReservationButton() {
+function ReservationButton(props) {
 
     function goToHomepage() {
         window.location.href="http://localhost:3000/reserveRoom"
     }
 
     return (
-        <button id = "buttoncenterpiece" onClick={goToHomepage}>
+        <button id={props.id} onClick={goToHomepage}>
             Rezervă o sală
         </button>
     )

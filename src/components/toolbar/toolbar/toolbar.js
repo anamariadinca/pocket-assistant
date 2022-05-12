@@ -5,16 +5,18 @@ import {RiContactsFill as ContactIcon} from 'react-icons/ri';
 import {MdOutlineEditCalendar as ReservationIcon} from 'react-icons/md';
 import {CgProfile as ProfileIcon} from 'react-icons/cg';
 import {AiOutlineLeft as CloseIcon, AiOutlineLogout as LogOutIcon, AiOutlineRight as OpenIcon} from 'react-icons/ai';
+import {VscMenu as OpenIcon2} from 'react-icons/vsc';
+import {moveScheduleForm} from "./toolbar-utils";
 
 function Toolbar(props) {
 
     return (
         <div>
             <Navbar>
-                <NavItem icon={[<CloseIcon/>, <OpenIcon/>]} id="side-nav-item">
+                <NavItem icon={[<CloseIcon/>, <OpenIcon2/>]} id="side-nav-item">
                     <SideNavMenu role={props.role} name={props.name}/>
                 </NavItem>
-                <div id="imagediv"><img id='imageid' src="img/logo.png" onClick={() => goToHomepage()}/></div>
+                <div id="imagediv"><img id='imageid' src="img/img.png" onClick={() => goToHomepage()}/></div>
                 <NavItem icon={<ProfileIcon/>} name={props.name} id="profile-menu">
                     <DropdownMenu/>
                 </NavItem>
@@ -57,23 +59,7 @@ function NavItem(props) {
                     document.getElementById("buttoncenterpiece").style.marginLeft = '40%';
                 }
             }
-            if (document.getElementById("scheduletable") != null) {
-                let width = document.getElementById("scheduletable").offsetWidth;
-                if (!open) {
-                    document.getElementById("scheduletable").style.marginLeft = 'calc((100% - ' + width + 'px + 170px)/2)';
-                    document.getElementById("scheddropdown").style.left = 'calc((100% - 30px)/2)';
-                    document.getElementById("textreserveroom").style.marginLeft = 'calc((60% + 170px)/2)';
-
-                    document.getElementById("imageid").style.left = 'calc(50%)';
-
-                } else {
-                    document.getElementById("scheduletable").style.marginLeft = 'calc((100% - '+ width +'px)/2)';
-                    document.getElementById("textreserveroom").style.marginLeft = '30%';
-                    document.getElementById("scheddropdown").style.left = 'calc((100% - 200px)/2)';
-
-                    document.getElementById("imageid").style.left = 'calc((100% - 170px) / 2)';
-                }
-            }
+            moveScheduleForm(open);
         }
     }
 

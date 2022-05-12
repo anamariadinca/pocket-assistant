@@ -8,7 +8,7 @@ function formatSubjectCell(subject) {
     if (checkCellContent(subject) && subject.search('/') >= 0) {
         let s1 = subject.split("/")[0];
         let s2 = subject.split("/")[1];
-        return <td>
+        return <td style={{padding:'3px'}}>
             <div className="main">
                 <div className="text">{s1}</div>
                 <div className="percentage">
