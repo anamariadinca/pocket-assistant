@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import './toolbar.css';
 import '../../home/Form.css';
-import {RiContactsFill as ContactIcon} from 'react-icons/ri';
+import {RiContactsFill as ContactIcon, RiSettings4Fill as SettingsIcon} from 'react-icons/ri';
 import {MdOutlineEditCalendar as ReservationIcon} from 'react-icons/md';
 import {CgProfile as ProfileIcon} from 'react-icons/cg';
-import {AiOutlineLeft as CloseIcon, AiOutlineLogout as LogOutIcon, AiOutlineRight as OpenIcon} from 'react-icons/ai';
+import {AiOutlineLeft as CloseIcon, AiOutlineLogout as LogOutIcon} from 'react-icons/ai';
 import {VscMenu as OpenIcon2} from 'react-icons/vsc';
 import {moveScheduleForm} from "./toolbar-utils";
+import we from "react-datepicker";
+import {fetchCall} from "../../utils/utils";
 
 function Toolbar(props) {
 
@@ -26,7 +28,7 @@ function Toolbar(props) {
 }
 
 function goToHomepage() {
-    window.location.href="http://localhost:3000/home"
+    window.location.href = "http://localhost:3000/home"
 }
 
 function Navbar(props) {
@@ -45,21 +47,34 @@ function NavItem(props) {
         setOpen(!open)
         if (id === "side-nav") {
             document.getElementById('side-nav').style.marginLeft = !open ? "170px" : ""
-            if (document.getElementById("schedule") != null) {
-                let width = document.getElementById("schedule").offsetWidth;
+            if (document.getElementById("schedule-today") != null) {
+                let widthToday = document.getElementById("schedule-today").offsetWidth;
                 if (!open) {
-                    document.getElementById("schedule").style.marginLeft = 'calc((100% - ' + width + 'px + 170px)/2)';
+                    document.getElementById("schedule-today").style.marginLeft = 'calc((100% - ' + widthToday + 'px + 170px)/2)';
+                    document.getElementById("schedule-tomorrow").style.marginRight = 'calc((100% - 400px)/2 - 400px)';
+                    document.getElementById("schedule-yesterday").style.marginLeft = 'calc((100% - 400px)/2 - 230px)';
+
+                    document.getElementById("arrowRight").style.marginRight = 'calc((100% - 400px)/2 - 508px)';
+                    document.getElementById("arrowLeft").style.marginLeft = 'calc((100% - 400px)/2 - 218px)';
+
                     document.getElementById("imageid").style.left = 'calc(50%)';
                     document.getElementById("textcenterpiece").style.marginRight = '-170px';
-                    document.getElementById("buttoncenterpiece").style.marginLeft = 'calc(40% + 85px)';
+                    document.getElementById("reservationbutton").style.marginLeft = 'calc(40% + 85px)';
                 } else {
-                    document.getElementById("schedule").style.marginLeft = 'calc((100% - ' + width + 'px)/2)';
+                    document.getElementById("schedule-today").style.marginLeft = 'calc((100% - ' + widthToday + 'px)/2)';
+                    document.getElementById("schedule-tomorrow").style.marginRight = 'calc((100% - 400px)/2 - 310px)';
+                    document.getElementById("schedule-yesterday").style.marginLeft = 'calc((100% - 400px)/2 - 310px)';
+
+                    document.getElementById("arrowRight").style.marginRight = '';
+                    document.getElementById("arrowLeft").style.marginLeft = '';
+
                     document.getElementById("imageid").style.left = 'calc((100% - 170px) / 2)';
                     document.getElementById("textcenterpiece").style.marginRight = '0px';
-                    document.getElementById("buttoncenterpiece").style.marginLeft = '40%';
+                    document.getElementById("reservationbutton").style.marginLeft = '40%';
                 }
             }
             moveScheduleForm(open);
+
         }
     }
 
@@ -94,14 +109,54 @@ function DropdownMenu() {
 
     return (
         <div className="dropdown">
-            <DropdownItem leftIcon={<ProfileIcon/>}>
+            <DropdownItem leftIcon={<SettingsIcon/>}>
                 Setări
             </DropdownItem>
-            <DropdownItem leftIcon={<LogOutIcon/>} redirectLink="http://localhost:3000/login">
+            <DropdownItem leftIcon={<LogOutIcon/>} func={logout()}>
                 Ieși din cont
             </DropdownItem>
         </div>
     )
+}
+
+function logout() {
+    // fetchCall("http://localhost:8081/logout", "", "http://localhost:3000/login")
+    fetch("http://localhost:8081/invalidateJWT?token=" + window.document.cookie, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.document.cookie
+        }
+    }).then(response => {
+        const status = response.status
+        if (status === 200) {
+            console.log("SUCCESSS")
+            window.location.href = "http://localhost:3000/login";
+        } else if (status === 400) {
+            document.getElementById("submitButton").disabled = false
+            console.log("SOMETHING WENT WRONG")
+            response.json().then(json => {
+                alert(json.message)
+                console.log(json);
+            })
+                .catch(error => {
+                    console.log(error)
+                    // handle error
+                });
+        } else if (status === 500) {
+            document.getElementById("submitButton").disabled = false
+            console.log("SOMETHING WENT WRONG")
+            response.json().then(json => {
+                alert(json.message)
+                console.log(json);
+            })
+                .catch(error => {
+                    console.log(error)
+                    // handle error
+                });
+        }
+    })
 }
 
 function SideNavMenu(formUser) {
@@ -118,7 +173,7 @@ function SideNavMenu(formUser) {
     function OptionalSideNavItem(props) {
         return (
             <a href={props.redirectLink} className="menu-item">
-                <span className="icon-button"> {formUser.role === "teacher" ? props.leftIcon : ""} </span>
+                <span className="icon-button"> {formUser.role === "teacher" || formUser.role === "admin" ? props.leftIcon : ""} </span>
                 {props.children}
             </a>
         );
@@ -132,9 +187,9 @@ function SideNavMenu(formUser) {
             <SideNavItem leftIcon={<ContactIcon/>} redirectLink="#">
                 Contact
             </SideNavItem>
-            {formUser.role === "teacher" ?
+            {formUser.role === "teacher" || formUser.role === "admin" ?
                 <OptionalSideNavItem leftIcon={<LogOutIcon/>} redirectLink="#">
-                    {formUser.role === "teacher" ? 'Adauga student' : ''}
+                    {formUser.role === "teacher" || formUser.role === "admin" ? 'Adauga student' : ''}
                 </OptionalSideNavItem> : ""}
 
         </div>

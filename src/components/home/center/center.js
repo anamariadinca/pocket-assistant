@@ -52,11 +52,25 @@ function Center(props) {
     function ArrowButton(props) {
 
         function goToHomepage() {
+            let offset = 1;
+            let today = new Date();
+
             if (props.id==="arrowLeft") {
-                setCounter(counter-1)
+
+                switch(today.getDay()+counter){
+                    case 1: offset = 3; break;
+                    case 2: offset = 2; break;
+                }
+
+                setCounter(counter-offset)
 
             } else {
-                setCounter(counter+1)
+
+                switch(today.getDay()+counter){
+                    case 5: offset = 3; break;
+                    case 6: offset = 2; break;
+                }
+                setCounter(counter+offset)
             }
         }
 

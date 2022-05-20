@@ -1,14 +1,14 @@
 import React from "react";
 import Lottie from 'react-lottie';
 
-import emailSentAnimation from '../../lotties/email-sent.json';
+import roomReservedAnimation from '../../lotties/room-reserved.json';
 
 const FormSuccess = () => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
         margin: '300',
-        animationData: emailSentAnimation,
+        animationData: roomReservedAnimation,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
@@ -19,7 +19,9 @@ const FormSuccess = () => {
     return (
         <div>
             <div style={{textAlign: 'center', fontFamily:'Trebuchet MS", Arial, Helvetica, sans-serif', marginTop: '80px'}}>
-                <h1>Am primit cererea de înregistrare. Vă rugăm să vă verificați adresa de email</h1>
+                <h1>
+                    Sala a fost rezervată cu succes!
+                </h1>
             </div>
             <Lottie
                 options={defaultOptions}

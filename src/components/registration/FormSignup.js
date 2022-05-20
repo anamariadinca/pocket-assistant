@@ -13,6 +13,34 @@ const FormSignup = () => {
                 <h2 className="form-header">Înregistrare</h2>
                 <h3 className="form-header">Introduceți datele de înregistrare mai jos</h3>
                 <div className="form-inputs">
+                    <label htmlFor="surname"
+                           className="form-label">
+                        Nume:
+                    </label>
+                    <input
+                        type="text"
+                        name="surname"
+                        className="form-input"
+                        placeholder="Tastați numele"
+                        value={values.surname}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-inputs">
+                    <label htmlFor="givenName"
+                           className="form-label">
+                        Prenume:
+                    </label>
+                    <input
+                        type="text"
+                        name="givenName"
+                        className="form-input"
+                        placeholder="Tastați prenumele"
+                        value={values.givenName}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-inputs">
                     <label htmlFor="email"
                            className="form-label">
                         Adresa de email:

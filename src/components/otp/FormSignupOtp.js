@@ -10,17 +10,17 @@ const FormSignupOtp = () => {
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form-header">Introduceți otp</h2>
+                <h2 className="form-header">Introduceți codul primit prin SMS</h2>
                 <div className="form-inputs">
                     <label htmlFor="otp"
                            className="form-label">
-                        Otp:
+
                     </label>
                     <input
                         type="text"
                         name="otp"
                         className="form-input"
-                        placeholder="Tastați OTP"
+                        placeholder="Tastați codul primit prin SMS"
                         value={values.otp}
                         onChange={handleChange}
                     />

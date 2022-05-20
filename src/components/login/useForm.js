@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import {fetchCall} from "../utils/utils";
 
 const url = 'http://localhost:8081/users/authenticate';
 
@@ -22,6 +23,13 @@ const useForm = () => {
 
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
+            let body = JSON.stringify({
+                username: values.email,
+                password: btoa(values.password)
+            });
+            let href = "http://localhost:3000/home";
+
+            // fetchCall(url, body, href)
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -37,6 +45,9 @@ const useForm = () => {
                 const status = response.status
                 if (status === 200) {
                     console.log("SUCCESSS")
+                    response.json().then(json => {
+                        window.document.cookie = json.jwt
+                    })
                     window.location.href = "http://localhost:3000/home";
                 } else if (status === 400) {
                     console.log("SOMETHING WENT WRONG")

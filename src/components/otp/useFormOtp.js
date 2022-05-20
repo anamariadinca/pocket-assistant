@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
+import {fetchCall} from "../utils/utils";
 import axios from "axios";
 
 const url = 'http://localhost:8081/users/register/send_otp?token=';
 const url2 = 'http://localhost:8081/users/register/otp?token=';
+const url3 = 'http://localhost:8081/users/firstAuth';
 
 const useFormOtp = () => {
     const [values, setValues] = useState({
@@ -32,13 +34,39 @@ const useFormOtp = () => {
         }).then(response => {
             const status = response.status
             if (status === 200) {
-                response.json().then(json => {
-                    console.log(json);
-                    document.cookie = json.token;
-                    console.log(document.cookie);
-                    console.log("SUCCESSS");
-                    window.location.href = "http://localhost:3000/home";
+                let body = JSON.stringify({
+                    token: token,
+                });
+                fetch(url3 + token, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: token,
+                    })
+                }).then(response => {
+                    const status = response.status
+                    if (status === 200) {
+                        console.log("SUCCESSS");
+                        response.json().then(json => {
+                            window.document.cookie = json.token
+                            window.location.href = "http://localhost:3000/home";
+                        })
+                    } else if (status === 400) {
+                        console.log("SOMETHING WENT WRONG")
+                        response.json().then(json => {
+                            alert(json.message)
+                            console.log(json);
+                        })
+                            .catch(error => {
+                                console.log(error)
+                                // handle error
+                            });
+                    }
                 })
+                console.log("SUCCESSS");
             } else if (status === 400) {
                 console.log("SOMETHING WENT WRONG")
                 response.json().then(json => {
@@ -83,7 +111,7 @@ const useFormOtp = () => {
         })
     }, []);
 
-    useEffect( () => {
+    useEffect(() => {
         token = window.location.href.split("token=")[1];
     })
 

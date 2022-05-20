@@ -1,11 +1,14 @@
 import {useState, useEffect} from "react";
+import {makeButtonPending, resetButtonStyle} from "../utils/utils"
 
 const url = 'http://localhost:8081/users/register/admin';
 
 const useForm = (validate) => {
     const [values, setValues] = useState({
         email: '',
-        phoneNumber: ''
+        phoneNumber: '',
+        surname: '',
+        givenName: ''
     })
 
     const [errors, setErrors] = useState("");
@@ -25,7 +28,7 @@ const useForm = (validate) => {
         setErrors(errors);
 
         if (Object.keys(errors).length === 0) {
-            document.getElementById("submitButton").disabled = true
+            makeButtonPending()
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -34,7 +37,8 @@ const useForm = (validate) => {
                 },
                 body: JSON.stringify({
                     email: values.email,
-                    phoneNumber: values.phoneNumber
+                    phoneNumber: values.phoneNumber,
+                    name: values.surname + " " + values.givenName
                 })
             }).then(response => {
                 const status = response.status
@@ -42,7 +46,7 @@ const useForm = (validate) => {
                     console.log("SUCCESSS")
                     window.location.href = "http://localhost:3000/emailSent";
                 } else if (status === 400) {
-                    document.getElementById("submitButton").disabled = false
+                    resetButtonStyle()
                     console.log("SOMETHING WENT WRONG")
                     response.json().then(json => {
                         alert(json.message)

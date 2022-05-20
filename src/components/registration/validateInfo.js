@@ -3,7 +3,7 @@ export default function validateInfo(values) {
 
     if (!values.email.trim()) {
         errors.email = "Email required"
-    } else if(!/^[a-zA-Z]{2,50}@upb.ro$|ana.maria.dinca.1411@gmail.com/i.test(values.email)) {
+    } else if(!/^[a-zA-Z]{2,50}@upb.ro$|ana.maria.dinca.1411@gmail.com|ana_maria.dinca@stud.etti.upb.ro/i.test(values.email)) {
         errors.email = "Email address is invalid"
     }
 

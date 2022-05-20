@@ -15,9 +15,11 @@ import HomePage from "./pages/home";
 import EmailSentPage from "./components/registration/FormSuccess";
 import Meme from "./pages/meme";
 import LoadingPage from "./pages/loading";
+import LoadingRegistrationPage from "./pages/loading-registration";
 import OtpPage from "./pages/otp";
 import TokenValidation from "./pages/tokenValidation";
 import ReserveRoomPage from "./pages/reserveRoom";
+import RoomReservedSuccess from "./components/reserve-room/FormSuccess";
 
 class App extends Component {
     render() {
@@ -26,11 +28,13 @@ class App extends Component {
                     <Route path = '/' element = {<MainPage/>}/>
                     <Route path = '/register' element = {<RegistrationPage/>}/>
                     <Route path = '/emailSent' element = {<EmailSentPage/>}/>
+                    <Route path = '/roomReserved' element = {<RoomReservedSuccess/>}/>
                     <Route path = '/credentialsValidated' element = {<CredentialsPage/>}/>
                     <Route path = '/credentials' element = {<TokenValidation/>}/>
                     <Route path = '/otp*' element = {<OtpPage/>}/>
                     <Route path = '/login' element = {<LoginPage/>}/>
                     <Route path = '/loading' element = {<LoadingPage/>}/>
+                    <Route path = '/loadingRegistration' element = {<LoadingRegistrationPage/>}/>
                     <Route path = '/reserveRoom' element = {<ReserveRoomPage/>}/>
                     <Route path = '/demo' element = {<HomePage/>}/>
                     <Route path = '/meme' element = {<Meme/>}/>

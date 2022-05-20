@@ -40,7 +40,7 @@ function moveScheduleForm(open) {
 
         }
     }
-    if (document.getElementsByClassName("react-datepicker-wrapper")) {
+    if (document.getElementsByClassName("react-datepicker-wrapper").length > 0) {
         if (!open) {
             document.getElementsByClassName("react-datepicker-wrapper")[0].style.marginLeft = 'calc((100% - 230px)/2)';
         } else {

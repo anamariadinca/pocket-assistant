@@ -9,20 +9,13 @@ function TeacherTable(props) {
 
     useEffect(() => {
         console.log("Occurs ONCE, AFTER the initial render.");
-        setScheduleData(getScheduleForDay(props.day))
+        setScheduleData(getScheduleForDay(props.day));
     }, []);
 
     useEffect(() => {
         let tbody = document.getElementById('tbody').offsetHeight;
         if (document.getElementById('reservationbutton')) {
             document.getElementById('reservationbutton').style.marginTop = 'calc(70px + '+ tbody +'px)';
-        }
-
-        switch (props.id) {
-            case "schedule-yesterday":
-            case "schedule-tomorrow": document.getElementById(props.id).style.width = '290px';
-                break;
-            default: document.getElementById(props.id).style.width = '400px';
         }
 
         let today = new Date();
@@ -35,8 +28,18 @@ function TeacherTable(props) {
                 }
             }
         }
+    });
+
+    useEffect(() => {
+
+        switch (props.id) {
+            case "schedule-yesterday":
+            case "schedule-tomorrow": document.getElementById(props.id).style.width = '290px';
+                break;
+            default: document.getElementById(props.id).style.width = '400px';
+        }
         setScheduleData(getScheduleForDay(props.day))
-    })
+    }, [props.day])
 
     function renderTableData() {
         if (scheduleData.length > 0) {

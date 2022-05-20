@@ -7,7 +7,7 @@ function ReservationButton() {
         let trs = document.getElementsByTagName('tr');
         for (let i = 1; i < trs.length; i++) {
             if (trs[i].style.backgroundColor.toString() === "rgba(39, 176, 255, 0.25)") {
-                window.location.href="http://localhost:3000/reserveRoom"
+                window.location.href="http://localhost:3000/roomReserved"
             }
         }
         // window.location.href="http://localhost:3000/reserveRoom?room=" + urlParams.get('room')

@@ -5,6 +5,7 @@ function setCalendarStyle() {
     document.getElementsByTagName('input')[0].style.borderWidth = '1px'
     document.getElementsByTagName('input')[0].style.borderRightWidth = '0px'
     document.getElementsByTagName('input')[0].style.borderColor = 'black'
+    document.getElementsByTagName('input')[0].style.textAlign = 'center'
 }
 
 function prepend(value, array) {
