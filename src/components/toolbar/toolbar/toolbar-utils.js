@@ -17,6 +17,15 @@ function moveScheduleForm(open) {
             document.getElementById("buttonreserve").style.marginLeft = '40%';
         }
     }
+
+    if (elementExists("facultytable")) {
+        let width = getElementById("facultytable").offsetWidth;
+        if (!open) {
+            getElementById("facultytable").style.marginLeft = 'calc((100% - ' + width + 'px + 170px)/2)';
+        } else {
+            getElementById("facultytable").style.marginLeft = 'calc((100% - ' + width + 'px)/2)';
+        }
+    }
     if(elementExists("imageid")) {
         if(!open) {
             getElementById("imageid").style.left = 'calc(50%)';
@@ -32,11 +41,27 @@ function moveScheduleForm(open) {
 
         }
     }
+    if (elementExists("professordropdown")) {
+        if (!open) {
+            getElementById("professordropdown").style.marginLeft = 'calc((100% - 60px)/2)';
+        } else {
+            getElementById("professordropdown").style.marginLeft = 'calc((100% - 230px)/2)';
+
+        }
+    }
     if (elementExists("textreserveroom")) {
         if (!open) {
             getElementById("textreserveroom").style.marginLeft = 'calc((60% + 170px)/2)';
         } else {
             getElementById("textreserveroom").style.marginLeft = '30%';
+
+        }
+    }
+    if (elementExists("profInfo")) {
+        if (!open) {
+            getElementById("profInfo").style.marginLeft = 'calc((60% + 170px)/2)';
+        } else {
+            getElementById("profInfo").style.marginLeft = '30%';
 
         }
     }

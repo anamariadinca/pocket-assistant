@@ -8,10 +8,4 @@ function setCalendarStyle() {
     document.getElementsByTagName('input')[0].style.textAlign = 'center'
 }
 
-function prepend(value, array) {
-    let newArray = array.slice();
-    newArray.unshift(value);
-    return newArray;
-}
-
-export {setCalendarStyle, prepend}
+export {setCalendarStyle}

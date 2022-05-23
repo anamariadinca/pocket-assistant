@@ -40,27 +40,50 @@ const useForm = () => {
                     username: values.email,
                     password: btoa(values.password)
                 })
-            }).then(response => {
+            }).then(response =>  response.json().then(data =>
+                ({status: response.status,
+                    body: data})))
+                .then(obj => {
+                    console.log(obj)
+                    const status = obj.status
+                        if (status === 200) {
+                            console.log("SUCCESSS")
+                            localStorage.setItem('jwt', obj.body.jwt)
+                            localStorage.setItem('guid', obj.body.guid)
 
-                const status = response.status
-                if (status === 200) {
-                    console.log("SUCCESSS")
-                    response.json().then(json => {
-                        window.document.cookie = json.jwt
-                    })
-                    window.location.href = "http://localhost:3000/home";
-                } else if (status === 400) {
-                    console.log("SOMETHING WENT WRONG")
-                    response.json().then(json => {
-                        alert(json.message)
-                        console.log(json);
-                    })
-                        .catch(error => {
-                            console.log(error)
-                            // handle error
-                        });
-                }
-            })
+                            window.location.href = "http://localhost:3000/home";
+                        } else if (status === 400) {
+                            console.log("SOMETHING WENT WRONG")
+                        }
+                });
+
+                // .then(response => {
+                //
+                //     const status = response.status
+                //     if (status === 200) {
+                //         console.log("SUCCESSS")
+                //         let resp;
+                //         response.json().then(json => {
+                //             resp = json.jwt;
+                //             // window.jwt = json.jwt
+                //             // window.guid = json.guid
+                //             // window.document.cookie = json.jwt
+                //             // window.document.guid = json.guid
+                //         })
+                //
+                //         window.location.href = "http://localhost:3000/home";
+                //     } else if (status === 400) {
+                //         console.log("SOMETHING WENT WRONG")
+                //         response.json().then(json => {
+                //             alert(json.message)
+                //             console.log(json);
+                //         })
+                //             .catch(error => {
+                //                 console.log(error)
+                //                 // handle error
+                //             });
+                //     }
+                // })
         }
     };
 

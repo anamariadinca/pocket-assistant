@@ -3,8 +3,9 @@ import "./reserveRoom.css";
 import "./react-datepicker.css";
 import ReservationButton from "../reserve-room/button";
 import DatePicker from "react-datepicker"
-import {prepend, setCalendarStyle} from "./utils";
+import {setCalendarStyle} from "./utils";
 import {addTable} from "./schedTable";
+import {prepend} from "../utils/utils";
 
 function ReserveRoomForm() {
     const [room, setRoom] = React.useState('');
@@ -73,7 +74,7 @@ function ReserveRoomForm() {
 
     return (
         <div>
-            <h1 id='textreserveroom'>Selectează o sală pentru a verifica disponibilitatea</h1>
+            <h1 id='textreserveroom' className="room-h1 ">Selectează o sală pentru a verifica disponibilitatea</h1>
             <div style={{marginTop: '1%'}}>
                 <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
                 <Dropdown

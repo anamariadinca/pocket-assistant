@@ -19,7 +19,13 @@ import LoadingRegistrationPage from "./pages/loading-registration";
 import OtpPage from "./pages/otp";
 import TokenValidation from "./pages/tokenValidation";
 import ReserveRoomPage from "./pages/reserveRoom";
+import ContactPage from "./pages/contact";
+import SettingsPage from "./pages/settings";
+import RegisterStudentPage from "./pages/register-student";
 import RoomReservedSuccess from "./components/reserve-room/FormSuccess";
+import StudentRegisteredPage from "./components/add-student/FormSuccess";
+import SettingsSuccessfulPage from "./components/settings/FormSuccess";
+import LogoutPage from "./components/toolbar/logout";
 
 class App extends Component {
     render() {
@@ -29,13 +35,19 @@ class App extends Component {
                     <Route path = '/register' element = {<RegistrationPage/>}/>
                     <Route path = '/emailSent' element = {<EmailSentPage/>}/>
                     <Route path = '/roomReserved' element = {<RoomReservedSuccess/>}/>
+                    <Route path = '/studentRegistered' element = {<StudentRegisteredPage/>}/>
                     <Route path = '/credentialsValidated' element = {<CredentialsPage/>}/>
                     <Route path = '/credentials' element = {<TokenValidation/>}/>
                     <Route path = '/otp*' element = {<OtpPage/>}/>
                     <Route path = '/login' element = {<LoginPage/>}/>
                     <Route path = '/loading' element = {<LoadingPage/>}/>
                     <Route path = '/loadingRegistration' element = {<LoadingRegistrationPage/>}/>
+                    <Route path = '/logout' element = {<LogoutPage/>}/>
                     <Route path = '/reserveRoom' element = {<ReserveRoomPage/>}/>
+                    <Route path = '/contact' element = {<ContactPage/>}/>
+                    <Route path = '/registerStudent' element = {<RegisterStudentPage/>}/>
+                    <Route path = '/settings' element = {<SettingsPage/>}/>
+                    <Route path = '/settingsUpdated' element = {<SettingsSuccessfulPage/>}/>
                     <Route path = '/demo' element = {<HomePage/>}/>
                     <Route path = '/meme' element = {<Meme/>}/>
                     <Route path = '/home' element = {<HomePage/>}/>

@@ -1,19 +1,17 @@
 import React, {useEffect, useState} from "react";
 import Toolbar from "../toolbar/toolbar/toolbar";
-import '../css/Form.css'
-import Center from "./center/center";
+import ProfileSettings from "./ProfileSettings";
 
 const url = 'http://localhost:8081/session?inf=';
 
-function Form() {
+const Form = () => {
 
-    // const urlParams = new URLSearchParams(window.location.search);
     const[name, setName] = useState('');
     const[week, setWeek] = useState('');
     const[role, setRole] = useState('');
 
     useEffect(() => {
-        let token =  localStorage.getItem('jwt');
+        let token =  localStorage.getItem('jwt');;
         let authHeader = 'Bearer ' + token
         fetch(url + token, {
             method: 'GET',
@@ -46,16 +44,12 @@ function Form() {
         })
     });
 
-
     return (
         <div>
-            {/*<Toolbar role={urlParams.get('role')} name={urlParams.get('name')} week={urlParams.get('week')}/>*/}
             <Toolbar role={role} name={name} week={week}/>
-            {/*<Center week={urlParams.get('week')}/>*/}
-            <Center role={role} name={name} week={week}/>
+            <ProfileSettings role={role} name={name} week={week}/>
         </div>
     )
-
 }
 
 export default Form;

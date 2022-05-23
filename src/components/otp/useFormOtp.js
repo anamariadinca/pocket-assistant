@@ -51,7 +51,7 @@ const useFormOtp = () => {
                     if (status === 200) {
                         console.log("SUCCESSS");
                         response.json().then(json => {
-                            window.document.cookie = json.token
+                            localStorage.setItem('jwt', json.token)
                             window.location.href = "http://localhost:3000/home";
                         })
                     } else if (status === 400) {

@@ -50,4 +50,36 @@ export function resetButtonStyle() {
     document.getElementById("submitButton").style.cursor = "pointer"
 }
 
-export {fetchCall}
+function prepend(value, array) {
+    let newArray = array.slice();
+    newArray.unshift(value);
+    return newArray;
+}
+
+export function validateInfo(values) {
+    let errors = {}
+
+    if (!values.email.trim()) {
+        errors.email = "Adresa email nu poate fi goală"
+    } else if(!/^[a-zA-Z]{2,50}@upb.ro$|ana.maria.dinca.1411@gmail.com|ana_maria.dinca@stud.etti.upb.ro/i.test(values.email)) {
+        errors.email = "Adresă email invalidă"
+    }
+
+    if (!values.phoneNumber.trim()) {
+        errors.phoneNumber = "Numărul de telefon nu poate fi gol"
+    } else if(!/^\+407[0-9]{8}$|^07[0-9]{8}$/i.test(values.phoneNumber)) {
+        errors.phoneNumber = "Numărul de teleofn este invalid invalid"
+    }
+
+    if (values.surname != null && !values.surname.trim()) {
+        errors.surname = "Numele nu poate fi gol"
+    }
+
+    if (values.givenName != null && !values.givenName.trim()) {
+        errors.givenName = "Prenumele nu poate fi gol"
+    }
+
+    return errors;
+}
+
+export {fetchCall, prepend}

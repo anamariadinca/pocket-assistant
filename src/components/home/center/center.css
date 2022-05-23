@@ -23,9 +23,9 @@
     width: 100%;
     height: 100%;
     margin-inline: auto;
-    /*text-align: center;*/
+    text-align: center;
     /*position: absolute;*/
-    /*margin-block-start: 1em;*/
+    margin-block-start: 1em;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #3f3f42;
 }

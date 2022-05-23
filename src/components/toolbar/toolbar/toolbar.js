@@ -12,19 +12,17 @@ import {fetchCall} from "../../utils/utils";
 
 function Toolbar(props) {
 
-    return (
-        <div>
-            <Navbar>
-                <NavItem icon={[<CloseIcon/>, <OpenIcon2/>]} id="side-nav-item">
-                    <SideNavMenu role={props.role} name={props.name}/>
-                </NavItem>
-                <div id="imagediv"><img id='imageid' src="img/img.png" onClick={() => goToHomepage()}/></div>
-                <NavItem icon={<ProfileIcon/>} name={props.name} id="profile-menu">
-                    <DropdownMenu/>
-                </NavItem>
-            </Navbar>
-        </div>
-    );
+    return (<div>
+        <Navbar>
+            <NavItem icon={[<CloseIcon/>, <OpenIcon2/>]} id="side-nav-item">
+                <SideNavMenu role={props.role} name={props.name}/>
+            </NavItem>
+            <div id="imagediv"><img id='imageid' src="img/img.png" onClick={() => goToHomepage()}/></div>
+            <NavItem icon={<ProfileIcon/>} name={props.name} id="profile-menu">
+                <DropdownMenu/>
+            </NavItem>
+        </Navbar>
+    </div>);
 }
 
 function goToHomepage() {
@@ -32,11 +30,9 @@ function goToHomepage() {
 }
 
 function Navbar(props) {
-    return (
-        <nav className="navbar">
-            <ul className="navbar-nav"> {props.children} </ul>
-        </nav>
-    )
+    return (<nav className="navbar">
+        <ul className="navbar-nav"> {props.children} </ul>
+    </nav>)
 }
 
 function NavItem(props) {
@@ -80,17 +76,15 @@ function NavItem(props) {
 
     let id = props.id === "side-nav-item" ? "side-nav" : "";
 
-    return (
-        <li className="navbar" id={props.id}>
-            <div style={{display: 'flex', height: 'var(--nav-size)'}}>
-                <p>{props.name}</p>
-                <a href="#" className="icon-button" id={id} onClick={() => chooseAction(id)}>
-                    {props.icon.length === 2 ? (open ? props.icon[0] : props.icon[1]) : props.icon}
-                </a>
-                {open && props.children}
-            </div>
-        </li>
-    )
+    return (<li className="navbar" id={props.id}>
+        <div style={{display: 'flex', height: 'var(--nav-size)'}}>
+            <p>{props.name}</p>
+            <a href="#" className="icon-button" id={id} onClick={() => chooseAction(id)}>
+                {props.icon.length === 2 ? (open ? props.icon[0] : props.icon[1]) : props.icon}
+            </a>
+            {open && props.children}
+        </div>
+    </li>)
 
 
 }
@@ -98,102 +92,53 @@ function NavItem(props) {
 function DropdownMenu() {
 
     function DropdownItem(props) {
-        return (
-            <a href={props.redirectLink} className="menu-item">
-                <span className="icon-button"> {props.leftIcon} </span>
-                {props.children}
-                {/*<span className="icon-right"> {props.rightIcon} </span>*/}
-            </a>
-        );
+        return (<a href={props.redirectLink} className="menu-item">
+            <span className="icon-button"> {props.leftIcon} </span>
+            {props.children}
+            {/*<span className="icon-right"> {props.rightIcon} </span>*/}
+        </a>);
     }
 
-    return (
-        <div className="dropdown">
-            <DropdownItem leftIcon={<SettingsIcon/>}>
-                Setări
-            </DropdownItem>
-            <DropdownItem leftIcon={<LogOutIcon/>} func={logout()}>
-                Ieși din cont
-            </DropdownItem>
-        </div>
-    )
-}
-
-function logout() {
-    // fetchCall("http://localhost:8081/logout", "", "http://localhost:3000/login")
-    fetch("http://localhost:8081/invalidateJWT?token=" + window.document.cookie, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + window.document.cookie
-        }
-    }).then(response => {
-        const status = response.status
-        if (status === 200) {
-            console.log("SUCCESSS")
-            window.location.href = "http://localhost:3000/login";
-        } else if (status === 400) {
-            document.getElementById("submitButton").disabled = false
-            console.log("SOMETHING WENT WRONG")
-            response.json().then(json => {
-                alert(json.message)
-                console.log(json);
-            })
-                .catch(error => {
-                    console.log(error)
-                    // handle error
-                });
-        } else if (status === 500) {
-            document.getElementById("submitButton").disabled = false
-            console.log("SOMETHING WENT WRONG")
-            response.json().then(json => {
-                alert(json.message)
-                console.log(json);
-            })
-                .catch(error => {
-                    console.log(error)
-                    // handle error
-                });
-        }
-    })
+    return (<div className="dropdown">
+        <DropdownItem leftIcon={<SettingsIcon/>} redirectLink="http://localhost:3000/settings">
+            Setări profil
+        </DropdownItem>
+        <DropdownItem leftIcon={<LogOutIcon/>} redirectLink="http://localhost:3000/logout">
+            Ieși din cont
+        </DropdownItem>
+    </div>)
 }
 
 function SideNavMenu(formUser) {
 
     function SideNavItem(props) {
-        return (
-            <a href={props.redirectLink} className="menu-item">
-                <span className="icon-button"> {props.leftIcon} </span>
-                {props.children}
-            </a>
-        );
+        return (<a href={props.redirectLink} className="menu-item">
+            <span className="icon-button"> {props.leftIcon} </span>
+            {props.children}
+        </a>);
     }
 
     function OptionalSideNavItem(props) {
-        return (
-            <a href={props.redirectLink} className="menu-item">
-                <span className="icon-button"> {formUser.role === "teacher" || formUser.role === "admin" ? props.leftIcon : ""} </span>
-                {props.children}
-            </a>
-        );
+        return (<a href={props.redirectLink} className="menu-item">
+                <span
+                    className="icon-button"> {formUser.role === "teacher" || formUser.role === "admin" ? props.leftIcon : ""} </span>
+            {props.children}
+        </a>);
     }
 
-    return (
-        <div className="side-nav">
-            <SideNavItem leftIcon={<ReservationIcon/>} redirectLink="http://localhost:3000/reserveRoom">
-                Rezervă o sală
-            </SideNavItem>
-            <SideNavItem leftIcon={<ContactIcon/>} redirectLink="#">
-                Contact
-            </SideNavItem>
-            {formUser.role === "teacher" || formUser.role === "admin" ?
-                <OptionalSideNavItem leftIcon={<LogOutIcon/>} redirectLink="#">
-                    {formUser.role === "teacher" || formUser.role === "admin" ? 'Adauga student' : ''}
-                </OptionalSideNavItem> : ""}
+    return (<div className="side-nav">
+        <SideNavItem leftIcon={<ReservationIcon/>} redirectLink="http://localhost:3000/reserveRoom">
+            Rezervă o sală
+        </SideNavItem>
+        <SideNavItem leftIcon={<ContactIcon/>} redirectLink="http://localhost:3000/contact">
+            Contact
+        </SideNavItem>
+        {formUser.role === "teacher" || formUser.role === "admin" ?
+            <OptionalSideNavItem leftIcon={<LogOutIcon/>} redirectLink="http://localhost:3000/registerStudent">
+                {formUser.role === "teacher" || formUser.role === "admin" ? 'Adauga student' : ''}
+            </OptionalSideNavItem> : ""}
 
-        </div>
-    )
+    </div>)
 }
 
 export default Toolbar;

@@ -1,4 +1,4 @@
-.room-h1 {
+.contact-h1 {
     width: 40%;
     margin-left: 30%;
     height: 100%;
@@ -7,25 +7,34 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #3f3f42;
 }
+.contact-h3 {
+    width: 40%;
+    margin-left: 30%;
+    height: 100%;
+    text-align: center;
+    margin-block-start: 560px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #3f3f42;
+}
 
-#scheduletable {
+#facultytable {
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     /*border-radius: 10px 10px 10px 10px;*/
     cursor: pointer;
     border: 3px solid var(--bg);
-    width: 200px;
+    width: 1000px;
     position: absolute;
-    margin-left: calc((100% - 200px)/2);
-    margin-block-start: 3em;
+    margin-left: calc((100% - 1000px)/2);
+    margin-block-start: 2em;
     border-spacing: 0 0;
 }
 
-#scheduletable td {
+#facultytable td {
     border: 1px solid #ddd;
     padding: 6px;
+    min-width: 200px;
 }
-
 /*#scheduletable th:not(:first-child, :nth-child(5)) {*/
 /*    border: 1px solid #ddd;*/
 /*    padding: 6px;*/
@@ -33,7 +42,7 @@
 
 /*#scheduletable tr:nth-child(even){background-color: #f2f2f2;}*/
 
-#scheduletable th {
+#facultytable th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
@@ -41,25 +50,25 @@
     color: white;
 }
 
-#scheduletable tr {
+#facultytable tr {
     height: 25px;
 }
 
-#scheddropdown {
+#professordropdown {
      -webkit-appearance: listbox;
      color: black;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
     border-color: black;
     position: absolute;
-    width: 200px;
+    width: 230px;
     height: 30px;
-    /*margin-block-start: 1.4em;*/
-    left: 50%;
+    margin-left: calc((100% - 230px)/2);
     text-align-last:center;
+    margin-block-start: 510px;
 
 }
 
-#scheddropdown:invalid {
+#professordropdown:invalid {
     color: #858484;
 }
 
