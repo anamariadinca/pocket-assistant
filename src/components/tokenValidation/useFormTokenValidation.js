@@ -5,7 +5,7 @@ const useFormTokenValidation = () => {
     useEffect(() => {
         let token = window.location.href.split("token=")[1];
 
-        fetch("http://localhost:8081/users/register/validateToken?token=" + token, {
+        fetch("http://localhost:8081/register/validateToken?token=" + token, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

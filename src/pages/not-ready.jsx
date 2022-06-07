@@ -2,7 +2,7 @@ import React from "react";
 import notReady from "../lotties/not-ready-yet.json";
 import Lottie from "react-lottie";
 
-const Meme = () => {
+const NotReady = () => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -24,4 +24,4 @@ const Meme = () => {
     )
 }
 
-export default Meme;
+export default NotReady;

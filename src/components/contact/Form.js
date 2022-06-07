@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Toolbar from "../toolbar/toolbar/toolbar";
 import ContactForm from "../contact/ContactForm";
 
-const url = 'http://localhost:8081/session?inf=';
+const url = 'http://localhost:8082/session?inf=';
 
 const Form = () => {
 

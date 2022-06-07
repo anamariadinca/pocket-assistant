@@ -2,8 +2,8 @@ import {useEffect, useState} from "react";
 import {fetchCall} from "../utils/utils";
 import axios from "axios";
 
-const url = 'http://localhost:8081/users/register/send_otp?token=';
-const url2 = 'http://localhost:8081/users/register/otp?token=';
+const url = 'http://localhost:8081/register/send_otp?token=';
+const url2 = 'http://localhost:8081/register/otp?token=';
 const url3 = 'http://localhost:8081/users/firstAuth';
 
 const useFormOtp = () => {

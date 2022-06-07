@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const url = 'http://localhost:8081/users/homePage';
-const url2 = 'http://localhost:8081/users/register/otp?token=';
+const url = 'http://localhost:8081/register/homePage';
+const url2 = 'http://localhost:8081/register/otp?token=';
 
 const useFormLoading = () => {
     const [values, setValues] = useState({

@@ -1,6 +1,6 @@
 // import {useEffect, useState} from "react";
 // import axios from "axios";
-// const url = 'http://localhost:8081/users/register/admin';
+// const url = 'http://localhost:8081/register/admin';
 //
 // const useFormLoading = () => {
 //     const [values, setValues] = useState({

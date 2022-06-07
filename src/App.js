@@ -13,7 +13,7 @@ import CredentialsPage from "./pages/credentials";
 import LoginPage from "./pages/login";
 import HomePage from "./pages/home";
 import EmailSentPage from "./components/registration/FormSuccess";
-import Meme from "./pages/meme";
+import NotReady from "./pages/not-ready";
 import LoadingPage from "./pages/loading";
 import LoadingRegistrationPage from "./pages/loading-registration";
 import OtpPage from "./pages/otp";
@@ -48,8 +48,8 @@ class App extends Component {
                     <Route path = '/registerStudent' element = {<RegisterStudentPage/>}/>
                     <Route path = '/settings' element = {<SettingsPage/>}/>
                     <Route path = '/settingsUpdated' element = {<SettingsSuccessfulPage/>}/>
-                    <Route path = '/demo' element = {<HomePage/>}/>
-                    <Route path = '/meme' element = {<Meme/>}/>
+                    <Route path = '/home' element = {<HomePage/>}/>
+                    <Route path = '/notReady' element = {<NotReady/>}/>
                     <Route path = '/home' element = {<HomePage/>}/>
                     <Route path = '/404' element = {<NotFoundPage/>}/>
                     <Route path = '/403' element = {<ForbiddenPage/>}/>
