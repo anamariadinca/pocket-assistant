@@ -4,7 +4,7 @@ const MainPage = () => {
     return (
         <div>
             <h3>Welcome to react router tutorial</h3>
-            <small>Main Page</small>
+            <small>Main Page of Asistetti</small>
         </div>
     )
 }
