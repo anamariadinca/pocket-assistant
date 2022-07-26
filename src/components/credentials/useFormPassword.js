@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const url = 'http://localhost:8081/register/password?token=';
+const url = 'http://localhost:8080/register/password?token=';
 
 const useFormPassword = (validate) => {
     const [values, setValues] = useState({

@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 import {fetchCall} from "../utils/utils";
 import axios from "axios";
 
-const url = 'http://localhost:8081/register/send_otp?token=';
-const url2 = 'http://localhost:8081/register/otp?token=';
-const url3 = 'http://localhost:8081/users/firstAuth';
+const url = 'http://localhost:8080/register/send_otp?token=';
+const url2 = 'http://localhost:8080/register/otp?token=';
+const url3 = 'http://localhost:8080/users/firstAuth?token=';
 
 const useFormOtp = () => {
     const [values, setValues] = useState({
@@ -51,7 +51,7 @@ const useFormOtp = () => {
                     if (status === 200) {
                         console.log("SUCCESSS");
                         response.json().then(json => {
-                            localStorage.setItem('jwt', json.token)
+                            localStorage.setItem('jwt', json.jwt)
                             window.location.href = "http://localhost:3000/home";
                         })
                     } else if (status === 400) {

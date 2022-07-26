@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react";
 import {fetchCall} from "../utils/utils";
 
-const url = 'http://localhost:8081/users/authenticate';
+const authentication_url = 'http://localhost:8080/users/authenticate';
+const home_redirect_url = "http://localhost:3000/home";
 
 const useForm = () => {
     const [values, setValues] = useState({
@@ -23,14 +24,7 @@ const useForm = () => {
 
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
-            let body = JSON.stringify({
-                username: values.email,
-                password: btoa(values.password)
-            });
-            let href = "http://localhost:3000/home";
-
-            // fetchCall(url, body, href)
-            fetch(url, {
+            fetch(authentication_url, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -51,39 +45,18 @@ const useForm = () => {
                             localStorage.setItem('jwt', obj.body.jwt)
                             localStorage.setItem('guid', obj.body.guid)
 
-                            window.location.href = "http://localhost:3000/home";
+                            window.location.href = home_redirect_url;
                         } else if (status === 400) {
-                            console.log("SOMETHING WENT WRONG")
+                            console.log("THERE WAS AN ERROR")
+                        } else if (status === 401) {
+                            console.log("THERE WAS AN ERROR")
+                            alert("Pereche de credențiale incorectă")
+                        } else if (status === 403) {
+                            console.log("THERE WAS AN ERROR")
+                            alert("Utilizatorul a fost blocat ca urmare numărului mare de încercări de autentificare eșuate. \n Vă rugăm să vă confirmați identitatea!")
+
                         }
                 });
-
-                // .then(response => {
-                //
-                //     const status = response.status
-                //     if (status === 200) {
-                //         console.log("SUCCESSS")
-                //         let resp;
-                //         response.json().then(json => {
-                //             resp = json.jwt;
-                //             // window.jwt = json.jwt
-                //             // window.guid = json.guid
-                //             // window.document.cookie = json.jwt
-                //             // window.document.guid = json.guid
-                //         })
-                //
-                //         window.location.href = "http://localhost:3000/home";
-                //     } else if (status === 400) {
-                //         console.log("SOMETHING WENT WRONG")
-                //         response.json().then(json => {
-                //             alert(json.message)
-                //             console.log(json);
-                //         })
-                //             .catch(error => {
-                //                 console.log(error)
-                //                 // handle error
-                //             });
-                //     }
-                // })
         }
     };
 

@@ -10,7 +10,7 @@ const RegisterStudentForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id = "regStudent">
                 <div className="form-inputs-student">
                     <label htmlFor="surname"
                            className="form-label-student">

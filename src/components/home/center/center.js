@@ -18,6 +18,9 @@ function Center(props) {
     let tableToday;
 
     let today = new Date();
+
+    today.setDate(13);
+    today.setMonth(4);
     let month = today.getMonth() + 1 + '';
     let monthFinal = month.length === 1 ? '0' + month : month;
     let startWeek = today.getDate() - today.getDay() + 1

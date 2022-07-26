@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import Lottie from 'react-lottie';
 
-import notReady from "../../lotties/not-ready-yet.json";
+import notReady from "../../lotties/university.json";
 
 function LogoutPage() {
 
     useEffect(() => {
         new Promise(res => setTimeout(res, 2000)).then(() => {
-            fetch("http://localhost:8081/invalidateJWT?token=" + localStorage.getItem('jwt'), {
+            fetch("http://localhost:8080/invalidateJWT?token=" + localStorage.getItem('jwt'), {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

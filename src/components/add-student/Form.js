@@ -25,6 +25,11 @@ const Form = () => {
             const status = response.status
             if (status === 200) {
                 response.json().then(json => {
+                    if (role === "student") {
+
+                        // window.open("http://localhost:3000/404", "_blank", "width=200,height=100")
+                        window.location.href = "http://localhost:3000/404";
+                    }
                     setName(json.name);
                     setRole(json.role);
                     setWeek(json.week);

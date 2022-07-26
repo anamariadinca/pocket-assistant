@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import {makeButtonPending, resetButtonStyle} from "../utils/utils"
 
-const url = 'http://localhost:8081/register/admin';
+const url = 'http://localhost:8080/register/admin';
 
 const useForm = (validate) => {
     const [values, setValues] = useState({

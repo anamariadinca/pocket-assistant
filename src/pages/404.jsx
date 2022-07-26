@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Lottie from 'react-lottie';
 
 import animation404 from '../lotties/error-404';
@@ -13,7 +13,12 @@ const NotFoundPage = () => {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+    useEffect(() => {
+        new Promise(res => setTimeout(res, 3000)).then(() => {
+            window.location.href = "http://localhost:3000/home";
+        })
 
+    })
     return (
         <div>
             <Lottie

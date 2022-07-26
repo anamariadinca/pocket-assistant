@@ -33,6 +33,7 @@ function ProfileSettingsForm(props) {
                         <input
                             type="text"
                             name="group"
+                            readonly="readonly"
                             className="form-input-settings"
                             value={values.group}
                         />
@@ -48,6 +49,17 @@ function ProfileSettingsForm(props) {
                         type="text"
                         name="email"
                         readonly="readonly"
+                        className="form-input-settings"
+                        value="ana_maria.dinca@stud.etti.upb.ro"
+                    />
+                </div><div className="form-inputs-settings">
+                    <label htmlFor="email"
+                           className="form-label-settings">
+                        Adresa de email secundară
+                    </label>
+                    <input
+                        type="text"
+                        name="email"
                         className="form-input-settings"
                         value={values.email}
                     />
